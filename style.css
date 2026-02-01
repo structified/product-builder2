@@ -168,3 +168,117 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+/* Contact Form Styles */
+.contact-form-section {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: var(--container-bg-light);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.5s ease;
+}
+
+body.dark-mode .contact-form-section {
+    background-color: var(--container-bg-dark);
+}
+
+.contact-form-section h2 {
+    color: var(--text-color-light);
+    margin-bottom: 25px;
+    font-size: 2rem;
+    transition: color 0.5s ease;
+}
+
+body.dark-mode .contact-form-section h2 {
+    color: var(--text-color-dark);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color-light);
+    transition: color 0.5s ease;
+}
+
+body.dark-mode .form-group label {
+    color: var(--text-color-dark);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+    transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+}
+
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group input[type="email"],
+body.dark-mode .form-group textarea {
+    background-color: #555;
+    border-color: #777;
+    color: #f0f2f5;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #ff8177;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 100, 150, 0.3);
+}
+
+body.dark-mode .form-group input[type="text"]:focus,
+body.dark-mode .form-group input[type="email"]:focus,
+body.dark-mode .form-group textarea:focus {
+    border-color: #38f9d7;
+    box-shadow: 0 0 8px rgba(56, 249, 215, 0.3);
+}
+
+.contact-form-section button[type="submit"] {
+    background-image: var(--button-gradient-light);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-image 0.5s ease;
+    box-shadow: var(--button-shadow-light);
+    margin-top: 15px;
+}
+
+body.dark-mode .contact-form-section button[type="submit"] {
+    background-image: var(--button-gradient-dark);
+    box-shadow: var(--button-shadow-dark);
+}
+
+.contact-form-section button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--button-shadow-hover-light);
+}
+
+body.dark-mode .contact-form-section button[type="submit"]:hover {
+    box-shadow: var(--button-shadow-hover-dark);
+}
+
+.contact-form-section button[type="submit"]:active {
+    transform: translateY(-1px);
+    box-shadow: var(--button-shadow-light);
+}
+
+body.dark-mode .contact-form-section button[type="submit"]:active {
+    box-shadow: var(--button-shadow-dark);
+}
