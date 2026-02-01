@@ -1,4 +1,20 @@
 
+:root {
+    --background-gradient-light: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    --container-bg-light: rgba(255, 255, 255, 0.8);
+    --text-color-light: #333;
+    --button-gradient-light: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    --button-shadow-light: 0 5px 15px rgba(255, 100, 150, 0.4);
+    --button-shadow-hover-light: 0 8px 25px rgba(255, 100, 150, 0.6);
+
+    --background-gradient-dark: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+    --container-bg-dark: rgba(0, 0, 0, 0.7);
+    --text-color-dark: #f0f2f5;
+    --button-gradient-dark: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+    --button-shadow-dark: 0 5px 15px rgba(56, 249, 215, 0.4);
+    --button-shadow-hover-dark: 0 8px 25px rgba(56, 249, 215, 0.6);
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f0f2f5;
@@ -7,22 +23,37 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    background-image: var(--background-gradient-light);
+    transition: background-image 0.5s ease;
+}
+
+body.dark-mode {
+    background-image: var(--background-gradient-dark);
 }
 
 .container {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--container-bg-light);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
+    transition: background-color 0.5s ease;
+}
+
+body.dark-mode .container {
+    background-color: var(--container-bg-dark);
 }
 
 h1 {
-    color: #333;
+    color: var(--text-color-light);
     margin-bottom: 30px;
     font-size: 2.5rem;
+    transition: color 0.5s ease;
+}
+
+body.dark-mode h1 {
+    color: var(--text-color-dark);
 }
 
 .numbers-container {
@@ -46,23 +77,94 @@ h1 {
 }
 
 #generate-btn {
-    background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    background-image: var(--button-gradient-light);
     color: white;
     border: none;
     padding: 18px 36px;
     font-size: 20px;
     border-radius: 15px;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 5px 15px rgba(255, 100, 150, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-image 0.5s ease;
+    box-shadow: var(--button-shadow-light);
+}
+
+body.dark-mode #generate-btn {
+    background-image: var(--button-gradient-dark);
+    box-shadow: var(--button-shadow-dark);
 }
 
 #generate-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 100, 150, 0.6);
+    box-shadow: var(--button-shadow-hover-light);
+}
+
+body.dark-mode #generate-btn:hover {
+    box-shadow: var(--button-shadow-hover-dark);
 }
 
 #generate-btn:active {
     transform: translateY(-1px);
-    box-shadow: 0 5px 15px rgba(255, 100, 150, 0.4);
+    box-shadow: var(--button-shadow-light);
+}
+
+body.dark-mode #generate-btn:active {
+    box-shadow: var(--button-shadow-dark);
+}
+
+/* Theme Switch */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
